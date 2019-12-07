@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-rm -rf .kata-data
-mkdir .kata-data
-date > .kata-data/started-at
+tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
+cp -a practice-repo $tmp_dir
 
 (
+    cd $tmp_dir
+    mkdir .kata-data
+    date > .kata-data/started-at
     cd practice-repo
     ln -s git-objects-and-meta .git
     git checkout .
@@ -14,5 +16,6 @@ date > .kata-data/started-at
     echo "../submit # once you've gotten to a solution"
 )
 
+rm -rf tmp_dir
 
 
