@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+rm -rf .kata-data
+mkdir .kata-data
+date > .kata-data/started-at
+
+(
+    cd practice-repo
+    ln -s git-objects-and-meta .git
+    git checkout .
+    git show
+    echo "Commit f7ea324d452df3945e7a598d4a194ff26827e068 has a move and a modification (complex commit)"
+    echo "Split f7ea324d452df3945e7a598d4a194ff26827e068 into two simple commits (one move, one modification)"
+    echo "../submit # once you've gotten to a solution"
+)
+
+
+
