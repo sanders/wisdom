@@ -4,7 +4,7 @@
 
 Run `./start` to do the kata.
 
-## Alternative: Manual kata with easy setup
+## Alternative: Manual kata setup that leaves a mess when done
 
 There is a small practice repo named `practice-repo` inside this directory.
 
