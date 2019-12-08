@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
+cp -a practice-repo $tmp_dir
+
+(
+    cd $tmp_dir
+    mkdir .kata-data
+    date > .kata-data/started-at
+    cd practice-repo
+    ln -s git-objects-and-meta .git
+    git checkout .
+    git show
+    echo "Commit f7ea324d452df3945e7a598d4a194ff26827e068 has a move and a modification (complex commit)"
+    echo "Split f7ea324d452df3945e7a598d4a194ff26827e068 into two simple commits (one move, one modification)"
+    PS1="ctrl-d to submit>" bash -i
+    date > ../.kata-data/submitted-at
+    /usr/bin/env ruby -r date -e '\
+          submitted = DateTime.parse(IO.read(%:../.kata-data/submitted-at:)); \
+          started   = DateTime.parse(IO.read(%:../.kata-data/started-at:));   \
+          seconds   = (submitted - started).to_f * 24 * 60 * 60;              \
+          printf("%0.0f seconds\n", seconds)                          \
+          '
+)
+
+rm -rf tmp_dir
+
+

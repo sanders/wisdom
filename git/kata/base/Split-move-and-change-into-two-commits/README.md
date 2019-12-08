@@ -1,5 +1,11 @@
 # Split one hard commit into two easy commits
 
+## Preferred: Timed kata with easy setup and affordances
+
+Run `./start` to do the kata.
+
+## Alternative: Manual kata setup that leaves a mess when done
+
 There is a small practice repo named `practice-repo` inside this directory.
 
 1. `cd practice-repo`
@@ -7,7 +13,6 @@ There is a small practice repo named `practice-repo` inside this directory.
 3. `git checkout .`
 4. `git show`
 5. Split f7ea324d452df3945e7a598d4a194ff26827e068 into two
-
 
 ## Solutions
 
